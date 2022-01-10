@@ -12,10 +12,18 @@ class TodoItem extends React.Component {
     })
   }
 
+  setUpdate = (updatedTitle, id) => {
+    console.log(updatedTitle, id)
+  }
+
   handleUpdatedDone = event => {
     if (event.key === "Enter") {
       this.setState({ editing: false })
     }
+  }
+
+  componentWillUnmount() {
+    console.log("Cleaning up...")
   }
 
   render() {
@@ -54,14 +62,14 @@ class TodoItem extends React.Component {
           </span>
         </div>
         <input
-        type="text"
-        style={editMode}
-        className={styles.textInput}
-        value={title}
-        onChange={e => {
-          this.props.setUpdate(e.target.value, id)
-        }}
-        onKeyDown={this.handleUpdatedDone}
+          type="text"
+          style={editMode}
+          className={styles.textInput}
+          value={title}
+          onChange={e => {
+            this.props.setUpdate(e.target.value, id)
+          }}
+          onKeyDown={this.handleUpdatedDone}
         />
       </li>
     )

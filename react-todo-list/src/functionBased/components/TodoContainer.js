@@ -68,6 +68,12 @@ const TodoContainer = () => {
     return savedTodos || []
   }
 
+  useEffect(() => {
+    // storing todos items
+    const temp = JSON.stringify(todos)
+    localStorage.setItem("todos", temp)
+  }, [todos])
+
   return (
     <div className="container">
       <div className="inner">
